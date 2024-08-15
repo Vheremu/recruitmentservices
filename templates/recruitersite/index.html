@@ -1,0 +1,44 @@
+{% extends 'recruitmentservices/base.html' %}
+{% load static %}
+<html>
+<head>
+   
+  
+      <link rel='stylesheet'href={% static 'css/style.css'%}>
+  
+<title>
+{% block title_html %}Recruitment Services Website{% endblock %}
+</title>
+</head>
+<body class='head'><br>
+   <h2> 
+<table class='table'>
+    <td class='td6'align=center><a class='links' href='{% url 'index'%}'><h3>Jobs</h3></a></td>
+ 
+<td class='td6'align=center><a class='links' href='{% url 'index'%}'><h3>History</h3></a></td>
+
+<td class='td6'align=center><a class='links' href='{% url 'index'%}'><h3>Account</h3></a></td>
+<td class='td6'align=center><a class='links' href='{% url 'index'%}'><h3>Feedback</h3></a></td>
+<td class='td6'align=center><a class='links' href='{% url 'index'%}'><h3>Contact Us</h3></a></td>
+  
+<td class='td6'align=center><a class='links' href='{% url 'index'%}'><h3>About Us</h3></a></td>
+    {% if user.is_authenticated %}
+            <td class='td6'align=center><a class='links' href='{% url 'accounts_app:user_logout'%}'>Hello:{{user.username}}<br>Logout </a></td>
+          {% else %}
+            <td class='td6'align=center><a class='links' href='{% url 'accounts_app:user_login'%}'><br><h3>Login</h3></a></td>
+          {% endif %}
+</table>{{user.profile_pics}}<br>
+</h2>
+</body>
+{% block body_block %}
+    <p>Recruiters!</p>
+    {% endblock %}
+   <div align='center'class='body'>
+<br><h3><p  class='brandtext'>Our Mission - To Deliver Simple Recruitment Services.</p>
+    </h3><br><br></div>
+<div class='footer'>
+   <h3><p>Copyright Recruitment Services 2024</p><a href='{%url 'index'%}'><p>Website</p></a><a href='{%url 'index'%}'><p>Affiliate Program.</p></a></h3>
+</div>
+
+
+</html>

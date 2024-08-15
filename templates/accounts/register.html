@@ -1,0 +1,51 @@
+{% extends 'recruitmentservices/base.html' %}
+{% load static %}
+{% block body_block %}
+<link rel='stylesheet'href={% static 'css/style.css'%}>
+<div class='body'>
+
+<div id='topmenu'>
+      
+
+
+</div>
+<div class='main_container'>
+ 
+  
+       <div id='body' class='center'>
+           {%if user_form.errors%}
+           <p class='link'>please enter valid information</p><p>{{userform.errors}}</p>
+           {%endif%}
+
+    <form action={% url 'accounts_app:register'%} method='POST'enctype='multipart/form-data' method='post'>
+        {% csrf_token %}
+        <div class='signin'>
+        <p >Create Account
+        </p></div><h1>
+        <p>Username:</p>
+        <input type="hidden" id="csrfToken" value="{{ csrf_token }}">
+        <p><input class='input'type='username' name='username' placeholder='Unique Username',value={user_form.username}></p>
+        <p>Password:</p>
+        <p><input class='input' type='password' name='password' value='' placeholder='Strong Password'></p>
+        <p>First Name:</p>
+        <p><input class='input' type='name' name='first_name' placeholder=''></p>
+        <p>Surname:</p>
+        <p><input class='input'type='surname' name='last_name' placeholder=''></p>
+         <p>Email Address:</p>
+        <p><input class='input' type='email' name='email' placeholder='x@x.x'></p>
+         <p>Phone Number:</p>
+        <p><input class='input'type='phonenumber' name='phonenumber' placeholder='+xxx xxx xxx xxx'></p>
+        <p>Profile Pic:</p><p><input type='file'name='profile_pic'>(Optional)</p>
+        
+        <p><input class='registerbtn1' class='button1' type='submit' name='' value='Register'></p></h1>
+            <h2>
+        Already have an Account ?    <a href='{% url 'accounts_app:user_login'%}' class='link'>Login Here</a><br>
+    </h2>
+        
+    </form>
+</div>
+   
+</div>
+</div>
+
+{% endblock %}

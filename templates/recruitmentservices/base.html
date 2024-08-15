@@ -1,0 +1,39 @@
+{% load static %}
+<html>
+<head>
+   
+  
+      <link rel='stylesheet'href={% static 'css/style.css'%}>
+  
+<title>
+{% block title_html %}Recruitment Services{% endblock %}
+</title>
+</head>
+<body class='head'><br>
+   <h2> 
+<table class='table'>
+    <td class='td6'align=center><a class='links' href='{% url 'index'%}'><h3>Job Seekers</h3></a></td>
+ 
+<td class='td6'align=center><a class='links' href='{% url 'recruitersite_app:index'%}'><h3>Recruiters</h3></a></td>
+
+<td class='td6'align=center><a class='links' href='{% url 'index'%}'><h3>My Account</h3></a></td>
+
+
+    {% if user.is_authenticated %}
+            <td class='td6'align=center><a class='links' href='{% url 'accounts_app:user_logout'%}'>Hello:{{user.username}}<br>Logout </a></td>
+          {% else %}
+            <td class='td6'align=center><a class='links' href='{% url 'accounts_app:user_login'%}'><br><h3>Login</h3></a></td>
+          {% endif %}
+</table>{{user.profile_pics}}<br>
+</h2>
+</body>
+{% block body_block %}{% endblock %}
+   <div align='center'class='body'>
+<br><h3><p  class='brandtext'>Our Mission - To Deliver Simple Recruitment Services.</p>
+    </h3><br><br></div>
+<div class='footer'>
+   <h3><p>Copyright Recruitment Services 2024</p><a href='{%url 'index'%}'><p>Website</p></a><a href='{%url 'index'%}'><p>Recruiters.</p></a></h3>
+</div>
+
+
+</html>
