@@ -10,35 +10,42 @@
 {% block title_html %}Recruitment Services Website{% endblock %}
 </title>
 </head>
-<body class='head'><br>
-   <h2> 
-<table class='table'>
-    <td class='td6'align=center><a class='links' href='{% url 'index'%}'><h3>Jobs</h3></a></td>
- 
-<td class='td6'align=center><a class='links' href='{% url 'index'%}'><h3>History</h3></a></td>
 
-<td class='td6'align=center><a class='links' href='{% url 'index'%}'><h3>Account</h3></a></td>
-<td class='td6'align=center><a class='links' href='{% url 'index'%}'><h3>Feedback</h3></a></td>
-<td class='td6'align=center><a class='links' href='{% url 'index'%}'><h3>Contact Us</h3></a></td>
-  
-<td class='td6'align=center><a class='links' href='{% url 'index'%}'><h3>About Us</h3></a></td>
-    {% if user.is_authenticated %}
-            <td class='td6'align=center><a class='links' href='{% url 'accounts_app:user_logout'%}'>Hello:{{user.username}}<br>Logout </a></td>
-          {% else %}
-            <td class='td6'align=center><a class='links' href='{% url 'accounts_app:user_login'%}'><br><h3>Login</h3></a></td>
-          {% endif %}
-</table>{{user.profile_pics}}<br>
-</h2>
-</body>
 {% block body_block %}
-    <p>Recruiters!</p>
+
+<div class='main_container'>
+    <div class='center'>
+    <h1 class='title'><p class='signin'>Vaccancies</p>
+        <table class='table'>
+    <td class='td6'align=center><a class='link' href='{% url 'recruitersite_app:add'%}'><h3>add</h3></a></td>
+    <td class='td6'align=center><a class='link' href='{% url 'recruitersite_app:active'%}'><h3>active</h3></a></td>
+    <td class='td6'align=center><a class='link' href='{% url 'index'%}'><h3>closed</h3></a></td>
+    <td class='td6'align=center><a class='link' href='{% url 'recruitersite_app:expired'%}'><h3>expired</h3></a></td>
+        </table>
+        {%if vaccancies%}
+        {%for vaccancy in vaccancies%}
+        <div class='vaccancy_div'>
+        <p  class='vaccancy_div'>{{vaccancy.title}}<br>{{vaccancy.expiry_date}}<br>{{vaccancy.recruiter}}<br>{{vaccancy.employmenttype}}</p>
+             <form action={% url 'recruitersite_app:view'%} method='POST'enctype='multipart/form-data' method='post'>
+        {% csrf_token %}
+        <p>
+              
+        <input type="hidden" id="csrfToken" value="{{ csrf_token }}">
+                         <p><input class='registerbtn1' class='button1' type='submit' name='' value='View'></p>
+       <input class='input'type='hidden' name='vaccancy' value='{{vaccancy.vaccancyid}}'>
+        
+
+                </p>
+                </form>
+        </div><hr class='hr'>
+        {%endfor%}
+        {%else%}
+        <p>You have not listed any vaccancies</p>
+        {%endif%}
+        </h1>
+    </div></div>
     {% endblock %}
-   <div align='center'class='body'>
-<br><h3><p  class='brandtext'>Our Mission - To Deliver Simple Recruitment Services.</p>
-    </h3><br><br></div>
-<div class='footer'>
-   <h3><p>Copyright Recruitment Services 2024</p><a href='{%url 'index'%}'><p>Website</p></a><a href='{%url 'index'%}'><p>Affiliate Program.</p></a></h3>
-</div>
+
 
 
 </html>

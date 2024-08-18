@@ -15,13 +15,24 @@
 .center{
     padding:50px;
 }
+
 .input{
     height:50px;
     width:300px;
     font-size: 30px;
     background-color: cornsilk;
 }
+.vaccancy_div{
+    background-color: lightgoldenrodyellow;
+    padding: 30px;
+}
+.hr{
+    width: 300px;
+    height: 10px;
+    background-color: gold;
+    color:gold;
 
+}
 .signin{
     color:gold;
     font-size: 60px;
@@ -44,6 +55,14 @@
     font-size:30px;
     size:70px;
 }
+.registerbtn2{
+    background-color:red;
+    color:white;
+    height:70px;
+    width:130px;
+    font-size:30px;
+    size:70px;
+}
 .table{
     background-color: white;
     border-bottom-color: red;
@@ -56,4 +75,10 @@
     border-bottom-color: aqua;
       border-bottom-color: red;
     border-bottom-width: 30px;
+}
+.vacancies{
+    color:gold;
+    font-size: 60px;
+    font-style: oblique;
+    font-weight:900;
 }

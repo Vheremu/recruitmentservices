@@ -10,13 +10,13 @@
 </title>
 </head>
 <body class='head'><br>
-   <h2> 
+   <h1> 
 <table class='table'>
-    <td class='td6'align=center><a class='links' href='{% url 'index'%}'><h3>Job Seekers</h3></a></td>
+    <td class='td6'align=center><a class='links' href='{% url 'index'%}'><h3>Jobs</h3></a></td>
  
-<td class='td6'align=center><a class='links' href='{% url 'recruitersite_app:index'%}'><h3>Recruiters</h3></a></td>
+<td class='td6'align=center><a class='links' href='{% url 'recruitersite_app:index'%}'><h3>Recruit</h3></a></td>
 
-<td class='td6'align=center><a class='links' href='{% url 'index'%}'><h3>My Account</h3></a></td>
+<td class='td6'align=center><a class='links' href='{% url 'index'%}'><h3>Profile</h3></a></td>
 
 
     {% if user.is_authenticated %}
@@ -25,14 +25,14 @@
             <td class='td6'align=center><a class='links' href='{% url 'accounts_app:user_login'%}'><br><h3>Login</h3></a></td>
           {% endif %}
 </table>{{user.profile_pics}}<br>
-</h2>
+</h1>
 </body>
 {% block body_block %}{% endblock %}
    <div align='center'class='body'>
-<br><h3><p  class='brandtext'>Our Mission - To Deliver Simple Recruitment Services.</p>
-    </h3><br><br></div>
+<br><h1><p  class='brandtext'>Our Mission - To Deliver Simple Recruitment Services.</p>
+    </h1><br><br></div>
 <div class='footer'>
-   <h3><p>Copyright Recruitment Services 2024</p><a href='{%url 'index'%}'><p>Website</p></a><a href='{%url 'index'%}'><p>Recruiters.</p></a></h3>
+   <h2><p>Copyright Recruitment Services 2024</p><a href='{%url 'index'%}'><p>About us</p></a><a href='{%url 'index'%}'><p>Contact us</p></a><a href='{%url 'index'%}'><p>Feedback</p></a><a href='{%url 'index'%}'><p>Testimonials</p></a></h2>
 </div>
 
 

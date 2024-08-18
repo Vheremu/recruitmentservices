@@ -26,12 +26,12 @@
         {%for vaccancy in vaccancies%}
         <div class='vaccancy_div'>
         <p  class='vaccancy_div'>{{vaccancy.title}}<br>{{vaccancy.expiry_date}}<br>{{vaccancy.recruiter}}<br>{{vaccancy.employmenttype}}</p>
-             <form action={% url 'index'%} method='POST'enctype='multipart/form-data' method='post'>
+             <form action={% url 'recruitersite_app:view'%} method='POST'enctype='multipart/form-data' method='post'>
         {% csrf_token %}
         <p>
               
         <input type="hidden" id="csrfToken" value="{{ csrf_token }}">
-                         <p><input class='registerbtn1' class='button1' type='submit' name='' value='Apply'></p>
+                         <p><input class='registerbtn1' class='button1' type='submit' name='' value='View'></p>
        <input class='input'type='hidden' name='vaccancy' value='{{vaccancy.vaccancyid}}'>
         
 
@@ -40,7 +40,7 @@
         </div><hr class='hr'>
         {%endfor%}
         {%else%}
-        <p>No vaccancies available</p>
+        <p>You do not have any expired vaccancies</p>
         {%endif%}
         </h1>
     </div></div>

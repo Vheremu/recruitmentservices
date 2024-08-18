@@ -20,4 +20,8 @@ app_name='recruitersite_app'
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index,name='index'),
+    path('add',views.add,name='add'),
+    path('view',views.view,name='view'),
+    path('active',views.active,name='active'),
+    path('expired',views.expired,name='expired'),
 ]

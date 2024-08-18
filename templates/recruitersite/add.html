@@ -1,0 +1,137 @@
+{% extends 'recruitmentservices/base.html' %}
+{% load static %}
+<html>
+<head>
+   
+  
+      <link rel='stylesheet'href={% static 'css/style.css'%}>
+  
+<title>
+{% block title_html %}Recruitment Services Website{% endblock %}
+</title>
+</head>
+
+{% block body_block %}
+
+<div class='main_container'>
+    <div class='center'>
+    <h1 class='title'><p class='signin'> Add Vaccancy</p>
+        <table class='table'>
+    <td class='td6'align=center><a class='link' href='{% url 'recruitersite_app:index'%}'><h3>All</h3></a></td>
+    <td class='td6'align=center><a class='link' href='{% url 'recruitersite_app:active'%}'><h3>active</h3></a></td>
+    <td class='td6'align=center><a class='link' href='{% url 'index'%}'><h3>closed</h3></a></td>
+    <td class='td6'align=center><a class='link' href='{% url 'recruitersite_app:expired'%}'><h3>expired</h3></a></td>
+        </table>
+          <form action={% url 'recruitersite_app:add'%} method='POST'enctype='multipart/form-data' method='post'>
+        {% csrf_token %}
+              {%if success%}
+              <p class='link'>Successfully created a new vaccancy!</p>
+              {%endif%}
+        {%if errorss%}
+              <p class='link'>Vaccanvy not added, make sure all required fields are entered</p>
+                <h1>
+                    {%if title%}
+        <p>Vaccancy Title:</p>
+        <input type="hidden" id="csrfToken" value="{{ csrf_token }}">
+        <p><input class='input'type='text'id='title' name='title'value='{{title}}'></p>
+        {%else%}
+                      <p>Vaccancy Title:</p>
+        <input type="hidden" id="csrfToken" value="{{ csrf_token }}">
+        <p><input class='input'type='text'id='title' name='title'placeholder='Title here'></p>
+                    {%endif%}
+        <p>Expiry Date:</p>
+        <p><input class='input' type='date' name='expiry_date' placeholder='Expiry date here'></p>
+                {%if recruiter%}
+              <p>Recruiter:</p></h1><h2>
+        <p><input class='input'type='text' name='recruiter' value='{{recruiter}}'>(Optional)</p> </h2><h1>
+              {%else%}
+               <p>Recruiter:</p></h1><h2>
+        <p><input class='input'type='text' name='recruiter'placeholder='Recruiter here'>(Optional)</p> </h2><h1>
+              {%endif%}
+              <p>Employment Type:</p></h1><h2>
+        <p><input class='input' type='radio' name='employment_type' value='permanent' placeholder=''>Permanent</p>
+        <p><input class='input' type='radio' name='employment_type' value='contract' placeholder=''>Contract</p>
+              </h2><h1>
+              {%if location%}
+              <p>Location:</p></h1><h2>
+        <p><input class='input'type='text' name='location' value='{{location}}'>(Optional)</p></h2><h1>
+              {%else%}
+                    <p>Location:</p></h1><h2>
+        <p><input class='input'type='text' name='location' placeholder='Location here'>(Optional)</p></h2><h1>
+              {%endif%}
+               {%if offer%}
+              <p>Duration:</p></h1><h2>
+              <p><input class='input'type='text' name='duration' value='{{duration}}'>(Optional)</p></h2><h1>
+                      {%else%}
+ <p>Duration:</p></h1><h2>
+              <p><input class='input'type='text' name='duration' placeholder='Duration here'>(Optional)</p></h2><h1>
+                 {%endif%}
+               {%if offer%}
+          <p>Responsibilities:</p></h1><h2>
+        <p><input class='input'type='text' name='responsibilities' value='{{responsibilities}}'>(Optional)</p></h2><h1>
+                      {%else%}
+       <p>Responsibilities:</p></h1><h2>
+        <p><input class='input'type='text' name='responsibilities'placeholder='Responsibilities here'>(Optional)</p></h2><h1>
+                 {%endif%}
+               {%if offer%}
+               <p>Attributes:</p></h1><h2>
+        <p><input class='input'type='text' name='attributes' value='{{attributes}}'>(Optional)</p></h2><h1>
+                      {%else%}
+  <p>Attributes:</p></h1><h2>
+        <p><input class='input'type='text' name='attributes' placeholder='Attributes here'>(Optional)</p></h2><h1>
+                 {%endif%}
+               {%if offer%}
+           <p>Requirements:</p></h1><h2>
+        <p><input class='input'type='text' name='requirements' value='{{requirements}}'>(Optional)</p></h2><h1>
+                      {%else%}
+ <p>Requirements:</p></h1><h2>
+        <p><input class='input'type='text' name='requirements' placeholder='Requirements here'>(Optional)</p></h2><h1>
+                 {%endif%}
+        {%if offer%}
+                 <p>Offer:</p></h1><h2>
+        <p><input class='input'type='text' name='offer' value='{{offer}}'>(Optional)</p></h2><h1>
+        {%else%}
+                   <p>Offer:</p></h1><h2>
+        <p><input class='input'type='text' name='offer' placeholder='Offer here'>(Optional)</p></h2><h1>
+              {%endif%}
+ 
+        
+        {%else%}
+        <h1>
+        <p>Vaccancy Title:</p>
+        <input type="hidden" id="csrfToken" value="{{ csrf_token }}">
+        <p><input class='input'type='text' name='title' placeholder='Title Here e.g I.T Technician',value=''></p>
+        
+        <p>Expiry Date:</p>
+        <p><input class='input' type='date' name='expiry_date' placeholder='Expiry date here'></p>
+              <p>Recruiter:</p></h1><h2>
+        <p><input class='input'type='text' name='recruiter' placeholder='Recruiter here'>(Optional)</p> </h2><h1>
+              <p>Employment Type:</p></h1><h2>
+        <p><input class='input' type='radio' name='employment_type' value='permanent' placeholder=''>Permanent</p>
+        <p><input class='input' type='radio' name='employment_type' value='contract' placeholder=''>Contract</p>
+              </h2><h1>
+              <p>Location:</p></h1><h2>
+        <p><input class='input'type='text' name='location' placeholder='Location Here'>(Optional)</p></h2><h1>
+              <p>Duration:</p></h1><h2>
+              <p><input class='input'type='text' name='duration' placeholder='Duration Here'>(Optional)</p></h2><h1>
+          <p>Responsibilities:</p></h1><h2>
+        <p><input class='input'type='text' name='responsibilities' placeholder='Responsibilities Here'>(Optional)</p></h2><h1>
+               <p>Attributes:</p></h1><h2>
+        <p><input class='input'type='text' name='attributes' placeholder='Attributes Here'>(Optional)</p></h2><h1>
+           <p>Requirements:</p></h1><h2>
+        <p><input class='input'type='text' name='requirements' placeholder='Requirements Here'>(Optional)</p></h2><h1>
+                 <p>Offer:</p></h1><h2>
+        <p><input class='input'type='text' name='offer' placeholder='Offer Here'>(Optional)</p></h2><h1>
+ {%endif%}
+        
+        <p><input class='registerbtn1' class='button1' type='submit' name='' value='Add'></p></h1>
+      
+        
+    </form>
+      
+    </div></div>
+    {% endblock %}
+
+
+
+</html>
