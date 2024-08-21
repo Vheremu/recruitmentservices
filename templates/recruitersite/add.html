@@ -6,129 +6,132 @@
   
       <link rel='stylesheet'href={% static 'css/style.css'%}>
   
-<title>
-{% block title_html %}Recruitment Services Website{% endblock %}
-</title>
+
 </head>
 
 {% block body_block %}
 
 <div class='main_container'>
     <div class='center'>
-    <h1 class='title'><p class='signin'> Add Vaccancy</p>
+   <h1> <p class='signin'> Add Vaccancy</p>
         <table class='table'>
     <td class='td6'align=center><a class='link' href='{% url 'recruitersite_app:index'%}'><h3>All</h3></a></td>
     <td class='td6'align=center><a class='link' href='{% url 'recruitersite_app:active'%}'><h3>active</h3></a></td>
     <td class='td6'align=center><a class='link' href='{% url 'index'%}'><h3>closed</h3></a></td>
     <td class='td6'align=center><a class='link' href='{% url 'recruitersite_app:expired'%}'><h3>expired</h3></a></td>
-        </table>
+        </table><div class='vaccancy_div'>
           <form action={% url 'recruitersite_app:add'%} method='POST'enctype='multipart/form-data' method='post'>
         {% csrf_token %}
               {%if success%}
               <p class='link'>Successfully created a new vaccancy!</p>
               {%endif%}
         {%if errorss%}
-              <p class='link'>Vaccanvy not added, make sure all required fields are entered</p>
+              <p class='link'>Vacanvy not added, make sure all required fields are entered</p>
                 <h1>
                     {%if title%}
-        <p>Vaccancy Title:</p>
+        <p class='signin'>Vacancy Tittle:</p> <fieldset> 
         <input type="hidden" id="csrfToken" value="{{ csrf_token }}">
-        <p><input class='input'type='text'id='title' name='title'value='{{title}}'></p>
+                    <p>Tittle:<br><input class='input'type='text'id='title' name='title'value='{{title}}'></p></fieldset>
         {%else%}
-                      <p>Vaccancy Title:</p>
+                    <p class= 'signin'>Vacancy Tittle:</p> <fieldset>
         <input type="hidden" id="csrfToken" value="{{ csrf_token }}">
-        <p><input class='input'type='text'id='title' name='title'placeholder='Title here'></p>
+        <p>Tittle:<br><input class='input'type='text'id='title' name='title'placeholder='Title here'></p></fieldset> 
                     {%endif%}
-        <p>Expiry Date:</p>
-        <p><input class='input' type='date' name='expiry_date' placeholder='Expiry date here'></p>
+        <p class='signin'>Expiry Date:</p><fieldset>
+        <p>Date:<br><input class='input' type='date' name='expiry_date' placeholder='Expiry date here'></p></fieldset>
                 {%if recruiter%}
-              <p>Recruiter:</p></h1><h2>
-        <p><input class='input'type='text' name='recruiter' value='{{recruiter}}'>(Optional)</p> </h2><h1>
+              <p class='signin'>Recruiter:</p></h1><h2><fieldset>
+              <p><input class='input'type='text' name='recruiter' value='{{recruiter}}'>(Optional)</p></fieldset> </h2><h1>
               {%else%}
-               <p>Recruiter:</p></h1><h2>
-        <p><input class='input'type='text' name='recruiter'placeholder='Recruiter here'>(Optional)</p> </h2><h1>
+               <p class='signin'>Recruiter:</p></h1><fieldset><h2>
+        <p><label for='recruiter'>Recruiter:</label><br><input class='input'type='text' id='recruiter'name='recruiter'placeholder='Recruiter here'>(Optional)</p> </h2></fieldset><h1>
               {%endif%}
-              <p>Employment Type:</p></h1><h2>
-        <p><input class='input' type='radio' name='employment_type' value='permanent' placeholder=''>Permanent</p>
-        <p><input class='input' type='radio' name='employment_type' value='contract' placeholder=''>Contract</p>
-              </h2><h1>
+              <p class='signin'>Employment Type:</p></h1><h2><fieldset>
+        <p><input class='input'id='permanent' type='radio' name='employment_type' value='permanent' placeholder=''><label for='permanent'>Permanent:</label></p>
+        <p><input class='input'id='contract'type='radio' name='employment_type' value='contract' placeholder=''><label for='contract'>Contract:</label></p>
+              </fieldset></h2><h1>
               {%if location%}
-              <p>Location:</p></h1><h2>
-        <p><input class='input'type='text' name='location' value='{{location}}'>(Optional)</p></h2><h1>
+              <p class='signin'>Location:</p></h1><h2><fieldset>
+              <p><label for='location'>Location:</label><br><input id='location'class='input'type='text' name='location' value='{{location}}'>(Optional)</p></fieldset></h2><h1>
               {%else%}
-                    <p>Location:</p></h1><h2>
-        <p><input class='input'type='text' name='location' placeholder='Location here'>(Optional)</p></h2><h1>
+                    <p class='signin'>Location:</p></h1><h2><fieldset>
+              <p><label for='location'>Location:</label><br><input id='location' class='input'type='text' name='location' placeholder='Location here'>(Optional)</p></fieldset></h2><h1>
               {%endif%}
                {%if offer%}
-              <p>Duration:</p></h1><h2>
-              <p><input class='input'type='text' name='duration' value='{{duration}}'>(Optional)</p></h2><h1>
+              <p class='signin'>Duration:</p></h1><h2><fieldset>
+              <p><label for='duration'>Duration:</label><br><input id='duration' class='input'type='text' name='duration' value='{{duration}}'>(Optional)</p></fieldset></h2><h1>
                       {%else%}
- <p>Duration:</p></h1><h2>
-              <p><input class='input'type='text' name='duration' placeholder='Duration here'>(Optional)</p></h2><h1>
+ <p class='signin'>Duration:</p></h1><h2><fieldset>
+              <p><label for='duration'>Duration:</label><br><input id='duration' class='input'type='text' name='duration' placeholder='Duration here'>(Optional)</p></fieldset></h2><h1>
                  {%endif%}
                {%if offer%}
-          <p>Responsibilities:</p></h1><h2>
-        <p><input class='input'type='text' name='responsibilities' value='{{responsibilities}}'>(Optional)</p></h2><h1>
+          <p class='signin'>Responsibilities:</p></h1><h2><fieldset>
+              <p><label for='responsibilities'>Responsibilities:</label><br><input id='responsibilities' class='input'type='text' name='responsibilities' value='{{responsibilities}}'>(Optional)</p></fieldset></h2><h1>
                       {%else%}
-       <p>Responsibilities:</p></h1><h2>
-        <p><input class='input'type='text' name='responsibilities'placeholder='Responsibilities here'>(Optional)</p></h2><h1>
+       <p class='signin'>Responsibilities:</p></h1><h2><fieldset>
+              <p><label for='responsibilities'>Responsibilities:</label><br><input id='responsibilities' class='input'type='text' name='responsibilities'placeholder='Responsibilities here'>(Optional)</p></fieldset></h2><h1>
                  {%endif%}
                {%if offer%}
-               <p>Attributes:</p></h1><h2>
-        <p><input class='input'type='text' name='attributes' value='{{attributes}}'>(Optional)</p></h2><h1>
+               <p class='signin'>Attributes:</p></h1><h2><fieldset>
+              <p><label for='attributes'>Attributes:</label><br><input id='attributes'class='input'type='text' name='attributes' value='{{attributes}}'>(Optional)</p></fieldset></h2><h1>
                       {%else%}
-  <p>Attributes:</p></h1><h2>
-        <p><input class='input'type='text' name='attributes' placeholder='Attributes here'>(Optional)</p></h2><h1>
+  <p class='signin'>Attributes:</p></h1><h2><fieldset>
+              <p><label for='attributes'>Attributes:</label><br><input id='attributes'class='input'type='text' name='attributes' placeholder='Attributes here'>(Optional)</p></fieldset></h2><h1>
                  {%endif%}
                {%if offer%}
-           <p>Requirements:</p></h1><h2>
-        <p><input class='input'type='text' name='requirements' value='{{requirements}}'>(Optional)</p></h2><h1>
+           <p class='signin'>Requirements:</p></h1><h2><fieldset>
+              <p><label for='requirements'>Requirements:</label><br><input id='requirements' class='input'type='text' name='requirements' value='{{requirements}}'>(Optional)</p></fieldset></h2><h1>
                       {%else%}
- <p>Requirements:</p></h1><h2>
-        <p><input class='input'type='text' name='requirements' placeholder='Requirements here'>(Optional)</p></h2><h1>
+ <p class='signin'>Requirements:</p></h1><h2><fieldset>
+              <p><label for='requirements'>Requirements:</label><br><input id='requirements'class='input'type='text' name='requirements' placeholder='Requirements here'>(Optional)</p></fieldset></h2><h1>
                  {%endif%}
         {%if offer%}
-                 <p>Offer:</p></h1><h2>
-        <p><input class='input'type='text' name='offer' value='{{offer}}'>(Optional)</p></h2><h1>
+                 <p class='signin'>Offer:</p></h1><h2><fieldset>
+              <p><label for='offer'>Offer:</label><br><input id='offer' class='input'type='text' name='offer' value='{{offer}}'>(Optional)</p></fieldset></h2><h1>
         {%else%}
-                   <p>Offer:</p></h1><h2>
-        <p><input class='input'type='text' name='offer' placeholder='Offer here'>(Optional)</p></h2><h1>
+                   <p class='signin'>Offer:</p></h1><h2><fieldset>
+              <p><label for='offer'>Offer:</label><br><input id='offer' class='input'type='text' name='offer' placeholder='Offer here'>(Optional)</p></fieldset></h2><h1>
               {%endif%}
  
         
         {%else%}
         <h1>
-        <p>Vaccancy Title:</p>
+        <p class='signin'>Vaccancy Title:</p><fieldset>
         <input type="hidden" id="csrfToken" value="{{ csrf_token }}">
-        <p><input class='input'type='text' name='title' placeholder='Title Here e.g I.T Technician',value=''></p>
+            <p><label for='title'>Title:</label><br><input id='title'class='input'type='text' name='title' placeholder='Title Here e.g I.T Technician',value=''></p></fieldset>
         
-        <p>Expiry Date:</p>
-        <p><input class='input' type='date' name='expiry_date' placeholder='Expiry date here'></p>
-              <p>Recruiter:</p></h1><h2>
-        <p><input class='input'type='text' name='recruiter' placeholder='Recruiter here'>(Optional)</p> </h2><h1>
-              <p>Employment Type:</p></h1><h2>
-        <p><input class='input' type='radio' name='employment_type' value='permanent' placeholder=''>Permanent</p>
-        <p><input class='input' type='radio' name='employment_type' value='contract' placeholder=''>Contract</p>
+        <p class='signin'>Expiry Date:</p><fieldset>
+            <p><label for='expiry_date'>Expiry Date:</label><br><input id='expiry_date'class='input' type='date' name='expiry_date' placeholder='Expiry date here'></p></fieldset>
+              <p class='signin'>Recruiter:</p></h1><h2><fieldset>
+              <p><label for='recruiter'>Recruiter:</label><br><input id='recruiter'class='input'type='text' name='recruiter' placeholder='Recruiter here'>(Optional)</p></fieldset> </h2><h1>
+              <p class='signin'>Employment Type:</p></h1><h2><fieldset>
+        <p><input id='permanent' class='input' type='radio' name='employment_type' value='permanent' placeholder=''><label for='permanent'>Permanent:</label></p>
+              <p><input id='contract' class='input' type='radio' name='employment_type' value='contract' placeholder=''><label for='contract'>Contract:</label></p></fieldset>
               </h2><h1>
-              <p>Location:</p></h1><h2>
-        <p><input class='input'type='text' name='location' placeholder='Location Here'>(Optional)</p></h2><h1>
-              <p>Duration:</p></h1><h2>
-              <p><input class='input'type='text' name='duration' placeholder='Duration Here'>(Optional)</p></h2><h1>
-          <p>Responsibilities:</p></h1><h2>
-        <p><input class='input'type='text' name='responsibilities' placeholder='Responsibilities Here'>(Optional)</p></h2><h1>
-               <p>Attributes:</p></h1><h2>
-        <p><input class='input'type='text' name='attributes' placeholder='Attributes Here'>(Optional)</p></h2><h1>
-           <p>Requirements:</p></h1><h2>
-        <p><input class='input'type='text' name='requirements' placeholder='Requirements Here'>(Optional)</p></h2><h1>
-                 <p>Offer:</p></h1><h2>
-        <p><input class='input'type='text' name='offer' placeholder='Offer Here'>(Optional)</p></h2><h1>
+              <p class='signin'>Location:</p></h1><h2><fieldset>
+              <p><label for='location'>Location:</label><br><input id='location' class='input'type='text' name='location' placeholder='Location Here'>(Optional)</p></fieldset></h2><h1>
+              <p class='signin'>Duration:</p></h1><h2><fieldset>
+              <p><label for='duration'>Duration:</label><br><input id='duration' class='input'type='text' name='duration' placeholder='Duration Here'>(Optional)</p></fieldset></h2><h1>
+          <p class='signin'>Responsibilities:</p></h1><h2><fieldset>
+              <p><label for='responsibilities'>Responsibilities:</label><br><input id='responsibilities' class='input'type='text' name='responsibilities' placeholder='Responsibilities Here'>(Optional)</p></fieldset></h2><h1>
+               <p class='signin'>Attributes:</p></h1><h2><fieldset>
+              <p><label for='attributes'>Attributes:</label><br><input id='attributes' class='input'type='text' name='attributes' placeholder='Attributes Here'>(Optional)</p></fieldset></h2><h1>
+           <p class='signin'>Requirements:</p></h1><h2><fieldset>
+              <p><label for='requirements'>Requirements:</label><br><input id='requirements'class='input'type='text' name='requirements' placeholder='Requirements Here'>(Optional)</p></fieldset></h2><h1>
+                 <p class='signin'>Offer:</p></h1><h2><fieldset>
+        <p><label for='offer'>Offer:</label><br><input class='input'type='text'id='offer' name='offer' placeholder='Offer Here'>(Optional)</p></fieldset></h2><h1>
  {%endif%}
         
         <p><input class='registerbtn1' class='button1' type='submit' name='' value='Add'></p></h1>
       
         
-    </form>
-      
+    </form></div>
+    {%if loggedin%}
+    {%else%}
+    <p class='apply_div'>
+        You are adding a vacancy without signing in. This means that your vacancy will be listed with our service howhever you will not be able to get insights provided by Recruitment services. You are adviced to put a clear email address where applicant can submit C.V's.
+    </p>
+    {%endif%}
     </div></div>
     {% endblock %}
 

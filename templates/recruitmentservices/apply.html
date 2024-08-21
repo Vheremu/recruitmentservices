@@ -1,0 +1,58 @@
+{% extends 'recruitmentservices/base.html' %}
+{% load static %}
+<html>
+<head>
+   
+  
+      <link rel='stylesheet'href={% static 'css/style.css'%}>
+  
+>
+</head>
+
+{% block body_block %}
+
+<div class='main_container'>
+    <div class='center'>
+    <h1 class='title'><p class='signin'>Vaccancy</p>
+        <table class='table'>
+    <td class='td6'align=center><a class='link' href='{% url 'index'%}'><h3>All</h3></a></td>
+
+        </table>
+        {%if error%}
+       <p class='link'>Upload Your c.v please.</p>
+        {%endif%}
+       <p class='vaccancy_div'>{{vaccancy.title}}
+           <br>Date Posted: {{vaccancy.date_posted}}
+           <br>Expiry Date: {{vaccancy.expiry_date}}
+           <br>Recruiter: {{vaccancy.recruiter}}
+           <br>Employment Type: {{vaccancy.employmenttype}}
+           <br>Location: {{vaccancy.location}}
+           <br>Duration: {{vaccancy.duration}}
+           <br>Responsibilities: {{vaccancy.responsibilities}}
+           <br>Attributes: {{vaccancy.attributes}}
+           <br>Requirements: {{vaccancy.requirements}}
+           <br>Offer: {{vaccancy.offer}}</p>
+        {%if loggedin%}
+        {%else%}
+        <p class=apply_div>
+            You are applying while not signed in. This means that your application will go through to recruiters, howhever you will not be able to get insights about your application that recruitment services provides. 
+        </p>
+        {%endif%}
+            <form action={% url 'apply'%} method='POST'enctype='multipart/form-data' method='post'>
+        {% csrf_token %}
+                 <input type="hidden" id="csrfToken" value="{{ csrf_token }}">
+                <input type="hidden" id="application" name='application' value="1">
+                <input type="hidden" id="vaccancy" name='vaccancy' value="{{vaccancy.vaccancyid}}">
+                Upload Your C.V Here<br>
+                <input type="file" name='cv'>(Required)<br><br>
+                <input class='registerbtn1' type='submit' name='' value='Apply'>   </form>    <a href='{% url 'index'%}'><input class='registerbtn2'  type='submit' name='' value='Cancel'></a>
+      
+                     
+     
+        </h1>
+    </div></div>
+    {% endblock %}
+
+
+
+</html>

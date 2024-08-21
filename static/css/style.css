@@ -20,7 +20,18 @@
     height:50px;
     width:300px;
     font-size: 30px;
-    background-color: cornsilk;
+    background-color:beige;
+}
+.inputs{
+    height:20px;
+    width:30px;
+    font-size: 30px;
+    background-color:beige;
+    
+}
+.apply_div{
+    background-color:blanchedalmond;
+    padding: 50px;
 }
 .vaccancy_div{
     background-color: lightgoldenrodyellow;

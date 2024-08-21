@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from .models import Vaccancy
+from django.contrib.auth.models import User
 def index(request):
     user=request.user
     vaccancies=0
@@ -23,11 +24,7 @@ def expired(request):
         vaccancies=Vaccancy.objects.filter(user=user)
         for vaccancy in vaccancies:
             expiry_date = datetime.datetime(vaccancy.expiry_date.year,vaccancy.expiry_date.month,vaccancy.expiry_date.day,vaccancy.expiry_date.hour,vaccancy.expiry_date.minute,vaccancy.expiry_date.second)
-            print(expiry_date)
-            print(now)
-            print(expiry_date-now)
             time_left=expiry_date-now
-            print(time_left.total_seconds())
             if int(time_left.total_seconds())<=0:
                 buffer.add(vaccancy)
         print('vacancies found')
@@ -48,11 +45,7 @@ def active(request):
         vaccancies=Vaccancy.objects.filter(user=user)
         for vaccancy in vaccancies:
             expiry_date = datetime.datetime(vaccancy.expiry_date.year,vaccancy.expiry_date.month,vaccancy.expiry_date.day,vaccancy.expiry_date.hour,vaccancy.expiry_date.minute,vaccancy.expiry_date.second)
-            print(expiry_date)
-            print(now)
-            print(expiry_date-now)
             time_left=expiry_date-now
-            print(time_left.total_seconds())
             if int(time_left.total_seconds())>=0:
                 buffer.add(vaccancy)
         print('vacancies found')
@@ -84,15 +77,19 @@ def add(request):
         requirements=request.POST.get('requirements')
         offer=request.POST.get('offer')
         if not title or not expiry_date or not employment_type:
-            print('error')
             errorss=1
-            print(title)
-            print(request.POST)
             my_dict = {'errorss':errorss,'title':title,'employment_type':employment_type,'recruiter':recruiter,'location':location,'duration':duration,'responsibilities':responsibilities,'attributes':attributes,'requirements':requirements,'offer':offer}
             return render(request,'recruitersite/add.html',context=my_dict)
         else:
-            print('job added')
-            vaccancy=Vaccancy.objects.create(user=request.user,title=title,date_posted=now,expiry_date=expiry_date,recruiter=recruiter,employmenttype=employment_type,location=location,dutation=duration,responsibilities=responsibilities,attributes=attributes,requirements=requirements,offer=offer)
+            try:
+                
+                vaccancy=Vaccancy.objects.create(user=request.user,title=title,date_posted=now,expiry_date=expiry_date,recruiter=recruiter,employmenttype=employment_type,location=location,dutation=duration,responsibilities=responsibilities,attributes=attributes,requirements=requirements,offer=offer)
+                print('vaccancy added while logged in')
+            except:
+                
+                user=User.objects.get(id=1)
+                vaccancy=Vaccancy.objects.create(user=user,title=title,date_posted=now,expiry_date=expiry_date,recruiter=recruiter,employmenttype=employment_type,location=location,dutation=duration,responsibilities=responsibilities,attributes=attributes,requirements=requirements,offer=offer)
+                print('vaccancy added while logged out')
             success=1
             my_dict = {'success':success,'vaccancy':vaccancy}
             return render(request,'recruitersite/add.html',context=my_dict)

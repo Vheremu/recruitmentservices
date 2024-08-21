@@ -20,6 +20,10 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index,name='index'),
+    path('apply',views.apply,name='apply'),
+    path('aboutus',views.aboutus,name='aboutus'),
+    path('feedback',views.feedback,name='feedback'),
+    path('testimonials',views.testimonials,name='testimonials'),
     path('accounts/',include('accounts.urls'),name='accounts'),
     path('recruiters/',include('recruitersite.urls'),name='recruiters'),
 

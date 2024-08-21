@@ -1,0 +1,70 @@
+{% extends 'recruitmentservices/base.html' %}
+{% load static %}
+<html>
+<head>
+   
+  
+      <link rel='stylesheet'href={% static 'css/style.css'%}>
+  
+>
+</head>
+
+{% block body_block %}
+
+<div class='main_container'>
+    <div class='center'>
+    <h1 class='title'><p class='signin'>Feedback</p>
+        <table class='table'>
+    <td class='td6'align=center><a class='link' href='{% url 'index'%}'><h3>Jobs</h3></a></td>
+            <td class='td6'align=center><a class='link' href='{% url 'recruitersite_app:index'%}'><h3>Recruit</h3></a></td>
+
+        </table>
+        {%if comment%}
+        <p class='link'>Please leave a comment in the comments section</p>
+        {%endif%}
+          <form action={% url 'feedback'%} method='POST'enctype='multipart/form-data' method='post'>
+        {% csrf_token %}
+               <input type="hidden" id="csrfToken" value="{{ csrf_token }}">
+            <div class=vaccancy_div>
+                Step 1.
+            <p class='signin'>Recruitment</p>Please rate our recruitment process. (Optional)<br>
+            <fieldset>
+            <input type='radio' id='r1' class='inputs'name='recruitment'value='1'><label for='r1'>1 Star</label><br>
+            <input type='radio' id='r2'class='inputs'name='recruitment'value='2'><label for='r2'>2 Star</label><br>
+            <input type='radio' id='r3' class='inputs'name='recruitment'value='3'><label for='r3'>3 Star</label><br>
+            <input type='radio' class='inputs'name='recruitment'value='4' id='r4'><label for='r4'>4 Star</label><br>
+            <input type='radio' class='inputs'name='recruitment'value='5' id='r5'><label for='r5'>5 Star</label><br>
+                </fieldset>
+        </div>
+        <hr class='hr'>
+        <div class=vaccancy_div>
+            Step 2.
+            <p class='signin'>Jobs</p>Please rate our jobs application process. (Optional)<br>
+            <fieldset>
+            <input type='radio' id='j1' class='inputs'name='jobs'value='1'><label for='j1'>1 Star</label><br>
+            <input type='radio' id='j2'class='inputs'name='jobs'value='2'><label for='j2'>2 Star</label><br>
+            <input type='radio' id='j3' class='inputs'name='jobs'value='3'><label for='j3'>3 Star</label><br>
+            <input type='radio' class='inputs'name='jobs'value='4' id='j4'><label for='j4'>4 Star</label><br>
+            <input type='radio' class='inputs'name='jobs'value='5' id='j5'><label for='j5'>5 Star</label><br>
+                </fieldset></div> <hr class='hr'>
+            <div class='vaccancy_div'>
+                Step 3.
+                <p class='signin'>Comment</p>Please leave a comment.<br>
+                <fieldset>
+                    <label for='comment'>Comment</label><br>
+                    <input type='text'class='input'name='comment'id='comment'placeholder='Comment Here'>
+                </fieldset>
+            </div>
+                  
+        <p><input class='registerbtn1' class='button1' type='submit' name='' value='Submit'></p></h1>
+      
+        
+    </form> 
+     
+        </h1>
+    </div></div>
+    {% endblock %}
+
+
+
+</html>

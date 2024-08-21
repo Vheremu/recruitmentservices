@@ -17,3 +17,17 @@ class Vaccancy(models.Model):
     offer = models.CharField(blank=True,max_length=100,unique=False)
     def __str__(self):
         return self.user.username
+class Application(models.Model):
+    applicationid = models.IntegerField(blank=False,unique=True,primary_key=True)
+    user = models.ForeignKey(User,on_delete=models.CASCADE,blank=True)
+    vaccancy = models.ForeignKey(Vaccancy,on_delete=models.CASCADE,blank=True)
+    cv = models.ImageField(upload_to='static/cvs',blank=True)
+class Comment(models.Model):
+    commentid = models.IntegerField(blank=False,unique=True,primary_key=True)
+    user = models.ForeignKey(User,on_delete=models.CASCADE,blank=True)
+    comment = models.CharField(blank=True,max_length=500,unique=False)
+    jobs = models.IntegerField(blank=True,unique=False)
+    recruitment = models.IntegerField(blank=True,unique=False)
+    def __str__(self):
+        return self.user.username
+    
