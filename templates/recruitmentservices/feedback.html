@@ -27,8 +27,8 @@
                <input type="hidden" id="csrfToken" value="{{ csrf_token }}">
             <div class=vaccancy_div>
                 Step 1.
-            <p class='signin'>Recruitment</p>Please rate our recruitment process. (Optional)<br>
-            <fieldset>
+                <p class='signin'><label for='r5'>Recruitment</label></p><label for='r5'>Please rate our recruitment process. (Optional)</label><br>
+            <fieldset class='main_container'>
             <input type='radio' id='r1' class='inputs'name='recruitment'value='1'><label for='r1'>1 Star</label><br>
             <input type='radio' id='r2'class='inputs'name='recruitment'value='2'><label for='r2'>2 Star</label><br>
             <input type='radio' id='r3' class='inputs'name='recruitment'value='3'><label for='r3'>3 Star</label><br>
@@ -39,8 +39,8 @@
         <hr class='hr'>
         <div class=vaccancy_div>
             Step 2.
-            <p class='signin'>Jobs</p>Please rate our jobs application process. (Optional)<br>
-            <fieldset>
+            <p class='signin'><label for='j5'>Jobs</label></p><label for='j5'>Please rate our jobs application process. (Optional)</label><br>
+            <fieldset class='main_container'>
             <input type='radio' id='j1' class='inputs'name='jobs'value='1'><label for='j1'>1 Star</label><br>
             <input type='radio' id='j2'class='inputs'name='jobs'value='2'><label for='j2'>2 Star</label><br>
             <input type='radio' id='j3' class='inputs'name='jobs'value='3'><label for='j3'>3 Star</label><br>
@@ -49,18 +49,19 @@
                 </fieldset></div> <hr class='hr'>
             <div class='vaccancy_div'>
                 Step 3.
-                <p class='signin'>Comment</p>Please leave a comment.<br>
-                <fieldset>
-                    <label for='comment'>Comment</label><br>
+                <p class='signin'><label for='comment'>Comment</label></p><label for='comment'>Please leave a comment.</label><br>
+                <fieldset for='comment' class='main_container'>
+                    <label for='comment'>Comment:</label><br>
                     <input type='text'class='input'name='comment'id='comment'placeholder='Comment Here'>
                 </fieldset>
             </div>
                   
-        <p><input class='registerbtn1' class='button1' type='submit' name='' value='Submit'></p></h1>
+        <p><input class='registerbtn1' class='button1' type='submit' name='' value='Submit'></p>      
+</h1>
       
         
     </form> 
-     
+                    <a href='{% url 'index'%}'><input class='registerbtn2'  type='submit' name='' value='Cancel'></a>
         </h1>
     </div></div>
     {% endblock %}

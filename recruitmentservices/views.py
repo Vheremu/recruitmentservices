@@ -2,7 +2,7 @@ import time,datetime
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
-from recruitersite.models import Vaccancy,Application,Comment
+from recruitersite.models import Vaccancy,Application,Comment,Testimonial
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.models import User
@@ -140,6 +140,32 @@ def feedback(request):
     my_dict = {}
     return render(request,'recruitmentservices/feedback.html',context=my_dict)
 def testimonials(request):
-
-    my_dict = {}
+    testimonial=request.POST.get('testimonial')
+    if request.POST:
+        if testimonial:
+            now=datetime.datetime.now()
+            user=request.user
+            print(now)
+            try:
+                testimony=Testimonial()
+                if user.id:
+                    testimony.user=user
+                else:
+                    testimony.user=User.objects.get(id=1)
+                testimony.testimony=testimonial
+                testimony.date_posted=now
+                testimony.save()
+                return HttpResponseRedirect(reverse('testimonials'))
+            except:
+                testimony=Testimonial()
+                testimony.user=User.objects.get(id=1)
+                testimony.testimony=testimonial
+                testimony.date_posted=now
+                testimony.save()
+                return HttpResponseRedirect(reverse('testimonials'))
+                
+        else:
+            return HttpResponseRedirect(reverse('testimonials'))
+    testimonials=Testimonial.objects.all()
+    my_dict = {'testimonials':testimonials}
     return render(request,'recruitmentservices/testimonials.html',context=my_dict)

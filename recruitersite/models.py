@@ -30,4 +30,11 @@ class Comment(models.Model):
     recruitment = models.IntegerField(blank=True,unique=False)
     def __str__(self):
         return self.user.username
+class Testimonial(models.Model):
+    testimonialid = models.IntegerField(blank=False,unique=True,primary_key=True)
+    user = models.ForeignKey(User,on_delete=models.CASCADE,blank=True)
+    testimony = models.CharField(blank=True,max_length=500,unique=False)
+    date_posted = models.DateTimeField()
+    def __str__(self):
+        return self.user.username
     

@@ -19,8 +19,33 @@
             <td class='td6'align=center><a class='link' href='{% url 'recruitersite_app:index'%}'><h3>Recruit</h3></a></td>
 
         </table>
-                       
-     
+            <div class='vaccancy_div'>
+                       <form action={% url 'testimonials'%} method='POST'enctype='multipart/form-data' method='post'>
+        {% csrf_token %}
+               <input type="hidden" id="csrfToken" value="{{ csrf_token }}">
+                <label for='testimonial'>Please leave your testimonial here</label>
+                <fieldset class='main_container'>
+                    <label for='testimonial'>Testimonial:</label>
+                    <br><input class='input' type='text'name='testimonial'id='testimonial'placeholder='Testimonial here'>
+                </fieldset>
+                      <p><input class='registerbtn1' class='button1' type='submit' name='' value='Submit'></p>      
+
+      
+        
+    </form> 
+                    <a href='{% url 'index'%}'><input class='registerbtn2'  type='submit' name='' value='Cancel'></a>
+        </div>  <hr class='hr'>
+                        {%for testimony in testimonials%}
+                        {%if testimony.user.id == 1%}
+                        <div class='vaccancy_div'>
+            <p class='signin'>User:Anonymous</p>{{testimony.date_posted}}<fieldset class='main_container'><p>{{testimony.testimony}}</p></fieldset>
+        </div><hr class='hr'>
+                {%else%}
+                          <div class='vaccancy_div'>
+            <p class='signin'>User:{{testimony.user}}</p>{{testimony.date_posted}}<fieldset class='main_container'><p>{{testimony.testimony}}</p></fieldset>
+        </div><hr class='hr'>
+     {%endif%}
+                        {%endfor%}
         </h1>
     </div></div>
     {% endblock %}

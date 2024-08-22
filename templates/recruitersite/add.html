@@ -29,103 +29,105 @@
               <p class='link'>Vacanvy not added, make sure all required fields are entered</p>
                 <h1>
                     {%if title%}
-        <p class='signin'>Vacancy Tittle:</p> <fieldset> 
+        <p class='signin'>Vacancy Tittle:</p> <fieldset class='main_container'> 
         <input type="hidden" id="csrfToken" value="{{ csrf_token }}">
                     <p>Tittle:<br><input class='input'type='text'id='title' name='title'value='{{title}}'></p></fieldset>
         {%else%}
-                    <p class= 'signin'>Vacancy Tittle:</p> <fieldset>
+                    <p class= 'signin'>Vacancy Tittle:</p> <fieldset class='main_container'>
         <input type="hidden" id="csrfToken" value="{{ csrf_token }}">
         <p>Tittle:<br><input class='input'type='text'id='title' name='title'placeholder='Title here'></p></fieldset> 
                     {%endif%}
-        <p class='signin'>Expiry Date:</p><fieldset>
+        <p class='signin'>Expiry Date:</p><fieldset class='main_container'>
         <p>Date:<br><input class='input' type='date' name='expiry_date' placeholder='Expiry date here'></p></fieldset>
                 {%if recruiter%}
-              <p class='signin'>Recruiter:</p></h1><h2><fieldset>
+              <p class='signin'>Recruiter:</p></h1><h2><fieldset class='main_container'>
               <p><input class='input'type='text' name='recruiter' value='{{recruiter}}'>(Optional)</p></fieldset> </h2><h1>
               {%else%}
-               <p class='signin'>Recruiter:</p></h1><fieldset><h2>
+               <p class='signin'>Recruiter:</p></h1><fieldset class='main_container'><h2>
         <p><label for='recruiter'>Recruiter:</label><br><input class='input'type='text' id='recruiter'name='recruiter'placeholder='Recruiter here'>(Optional)</p> </h2></fieldset><h1>
               {%endif%}
-              <p class='signin'>Employment Type:</p></h1><h2><fieldset>
+              <p class='signin'>Employment Type:</p></h1><h2><fieldset class='main_container'>
         <p><input class='input'id='permanent' type='radio' name='employment_type' value='permanent' placeholder=''><label for='permanent'>Permanent:</label></p>
         <p><input class='input'id='contract'type='radio' name='employment_type' value='contract' placeholder=''><label for='contract'>Contract:</label></p>
               </fieldset></h2><h1>
               {%if location%}
-              <p class='signin'>Location:</p></h1><h2><fieldset>
+              <p class='signin'>Location:</p></h1><h2><fieldset class='main_container'>
               <p><label for='location'>Location:</label><br><input id='location'class='input'type='text' name='location' value='{{location}}'>(Optional)</p></fieldset></h2><h1>
               {%else%}
-                    <p class='signin'>Location:</p></h1><h2><fieldset>
+                    <p class='signin'>Location:</p></h1><h2><fieldset class='main_container'>
               <p><label for='location'>Location:</label><br><input id='location' class='input'type='text' name='location' placeholder='Location here'>(Optional)</p></fieldset></h2><h1>
               {%endif%}
                {%if offer%}
-              <p class='signin'>Duration:</p></h1><h2><fieldset>
+              <p class='signin'>Duration:</p></h1><h2><fieldset class='main_container'>
               <p><label for='duration'>Duration:</label><br><input id='duration' class='input'type='text' name='duration' value='{{duration}}'>(Optional)</p></fieldset></h2><h1>
                       {%else%}
- <p class='signin'>Duration:</p></h1><h2><fieldset>
+ <p class='signin'>Duration:</p></h1><h2><fieldset class='main_container'>
               <p><label for='duration'>Duration:</label><br><input id='duration' class='input'type='text' name='duration' placeholder='Duration here'>(Optional)</p></fieldset></h2><h1>
                  {%endif%}
                {%if offer%}
-          <p class='signin'>Responsibilities:</p></h1><h2><fieldset>
+          <p class='signin'>Responsibilities:</p></h1><h2><fieldset class='main_container'>
               <p><label for='responsibilities'>Responsibilities:</label><br><input id='responsibilities' class='input'type='text' name='responsibilities' value='{{responsibilities}}'>(Optional)</p></fieldset></h2><h1>
                       {%else%}
-       <p class='signin'>Responsibilities:</p></h1><h2><fieldset>
+       <p class='signin'>Responsibilities:</p></h1><h2><fieldset class='main_container'>
               <p><label for='responsibilities'>Responsibilities:</label><br><input id='responsibilities' class='input'type='text' name='responsibilities'placeholder='Responsibilities here'>(Optional)</p></fieldset></h2><h1>
                  {%endif%}
                {%if offer%}
-               <p class='signin'>Attributes:</p></h1><h2><fieldset>
+               <p class='signin'>Attributes:</p></h1><h2><fieldset class='main_container'>
               <p><label for='attributes'>Attributes:</label><br><input id='attributes'class='input'type='text' name='attributes' value='{{attributes}}'>(Optional)</p></fieldset></h2><h1>
                       {%else%}
-  <p class='signin'>Attributes:</p></h1><h2><fieldset>
+  <p class='signin'>Attributes:</p></h1><h2><fieldset class='main_container'>
               <p><label for='attributes'>Attributes:</label><br><input id='attributes'class='input'type='text' name='attributes' placeholder='Attributes here'>(Optional)</p></fieldset></h2><h1>
                  {%endif%}
                {%if offer%}
-           <p class='signin'>Requirements:</p></h1><h2><fieldset>
+           <p class='signin'>Requirements:</p></h1><h2><fieldset class='main_container'>
               <p><label for='requirements'>Requirements:</label><br><input id='requirements' class='input'type='text' name='requirements' value='{{requirements}}'>(Optional)</p></fieldset></h2><h1>
                       {%else%}
- <p class='signin'>Requirements:</p></h1><h2><fieldset>
+ <p class='signin'>Requirements:</p></h1><h2><fieldset class='main_container'>
               <p><label for='requirements'>Requirements:</label><br><input id='requirements'class='input'type='text' name='requirements' placeholder='Requirements here'>(Optional)</p></fieldset></h2><h1>
                  {%endif%}
         {%if offer%}
-                 <p class='signin'>Offer:</p></h1><h2><fieldset>
+                 <p class='signin'>Offer:</p></h1><h2><fieldset class='main_container'>
               <p><label for='offer'>Offer:</label><br><input id='offer' class='input'type='text' name='offer' value='{{offer}}'>(Optional)</p></fieldset></h2><h1>
         {%else%}
-                   <p class='signin'>Offer:</p></h1><h2><fieldset>
+                   <p class='signin'>Offer:</p></h1><h2><fieldset class='main_container'>
               <p><label for='offer'>Offer:</label><br><input id='offer' class='input'type='text' name='offer' placeholder='Offer here'>(Optional)</p></fieldset></h2><h1>
               {%endif%}
  
         
         {%else%}
         <h1>
-        <p class='signin'>Vaccancy Title:</p><fieldset>
+        <p class='signin'>Vaccancy Title:</p><fieldset class='main_container'>
         <input type="hidden" id="csrfToken" value="{{ csrf_token }}">
             <p><label for='title'>Title:</label><br><input id='title'class='input'type='text' name='title' placeholder='Title Here e.g I.T Technician',value=''></p></fieldset>
         
-        <p class='signin'>Expiry Date:</p><fieldset>
+        <p class='signin'>Expiry Date:</p><fieldset class='main_container'>
             <p><label for='expiry_date'>Expiry Date:</label><br><input id='expiry_date'class='input' type='date' name='expiry_date' placeholder='Expiry date here'></p></fieldset>
-              <p class='signin'>Recruiter:</p></h1><h2><fieldset>
+              <p class='signin'>Recruiter:</p></h1><h2><fieldset class='main_container'>
               <p><label for='recruiter'>Recruiter:</label><br><input id='recruiter'class='input'type='text' name='recruiter' placeholder='Recruiter here'>(Optional)</p></fieldset> </h2><h1>
-              <p class='signin'>Employment Type:</p></h1><h2><fieldset>
+              <p class='signin'>Employment Type:</p></h1><h2><fieldset class='main_container'>
         <p><input id='permanent' class='input' type='radio' name='employment_type' value='permanent' placeholder=''><label for='permanent'>Permanent:</label></p>
               <p><input id='contract' class='input' type='radio' name='employment_type' value='contract' placeholder=''><label for='contract'>Contract:</label></p></fieldset>
               </h2><h1>
-              <p class='signin'>Location:</p></h1><h2><fieldset>
+              <p class='signin'>Location:</p></h1><h2><fieldset class='main_container'>
               <p><label for='location'>Location:</label><br><input id='location' class='input'type='text' name='location' placeholder='Location Here'>(Optional)</p></fieldset></h2><h1>
-              <p class='signin'>Duration:</p></h1><h2><fieldset>
+              <p class='signin'>Duration:</p></h1><h2><fieldset class='main_container'>
               <p><label for='duration'>Duration:</label><br><input id='duration' class='input'type='text' name='duration' placeholder='Duration Here'>(Optional)</p></fieldset></h2><h1>
-          <p class='signin'>Responsibilities:</p></h1><h2><fieldset>
+          <p class='signin'>Responsibilities:</p></h1><h2><fieldset class='main_container'>
               <p><label for='responsibilities'>Responsibilities:</label><br><input id='responsibilities' class='input'type='text' name='responsibilities' placeholder='Responsibilities Here'>(Optional)</p></fieldset></h2><h1>
-               <p class='signin'>Attributes:</p></h1><h2><fieldset>
+               <p class='signin'>Attributes:</p></h1><h2><fieldset class='main_container'>
               <p><label for='attributes'>Attributes:</label><br><input id='attributes' class='input'type='text' name='attributes' placeholder='Attributes Here'>(Optional)</p></fieldset></h2><h1>
-           <p class='signin'>Requirements:</p></h1><h2><fieldset>
+           <p class='signin'>Requirements:</p></h1><h2><fieldset class='main_container'>
               <p><label for='requirements'>Requirements:</label><br><input id='requirements'class='input'type='text' name='requirements' placeholder='Requirements Here'>(Optional)</p></fieldset></h2><h1>
-                 <p class='signin'>Offer:</p></h1><h2><fieldset>
+                 <p class='signin'>Offer:</p></h1><h2><fieldset class='main_container'>
         <p><label for='offer'>Offer:</label><br><input class='input'type='text'id='offer' name='offer' placeholder='Offer Here'>(Optional)</p></fieldset></h2><h1>
  {%endif%}
         
         <p><input class='registerbtn1' class='button1' type='submit' name='' value='Add'></p></h1>
       
         
-    </form></div>
+    </form> <a href='{% url 'index'%}'><input class='registerbtn2'  type='submit' name='' value='Cancel'></a>
+              
+              </div>
     {%if loggedin%}
     {%else%}
     <p class='apply_div'>
